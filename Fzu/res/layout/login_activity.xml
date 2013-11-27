@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="@dimen/login_activity_left_padding"
+    android:paddingRight="@dimen/login_activity_right_padding"
+    android:paddingTop="@dimen/login_activity_top_padding"
+     >
+    
+    <ImageView
+        android:id="@+id/fzu_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/app_fzu"
+        android:layout_centerHorizontal="true"
+        />
+    
+    <LinearLayout
+        android:id="@+id/user_input"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_background"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        >
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/login_edit_top_bottom_padding"
+            android:paddingBottom="@dimen/login_edit_top_bottom_padding"
+            >    
+        	<ImageView
+        	    android:id="@+id/user_name_img"
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:background="@drawable/user_name_img"
+        	    android:layout_centerVertical="true"
+        	    android:layout_marginRight="@dimen/login_img_right_margin"
+        	    android:layout_marginLeft="@dimen/login_img_left_margin"
+        	    />
+        	
+        	<EditText
+        	    android:id="@+id/user_name_eidt"
+        	    android:layout_width="fill_parent"
+        	    android:layout_height="wrap_content"
+        	    android:layout_toRightOf="@id/user_name_img"
+        	    android:hint="@string/login_please_enter_name"
+        	    android:background="@null"
+        	    />
+        </RelativeLayout>
+        
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray"
+            />
+        
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/login_edit_top_bottom_padding"
+            android:paddingBottom="@dimen/login_edit_top_bottom_padding"
+            >    
+        	<ImageView
+        	    android:id="@+id/user_passwd_img"
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:background="@drawable/user_passwd_img"
+        	    android:layout_centerVertical="true"
+        	    android:layout_marginRight="@dimen/login_img_right_margin"
+        	    android:layout_marginLeft="@dimen/login_img_left_margin"
+        	    />
+        	
+        	<EditText
+        	    android:id="@+id/user_passwd_eidt"
+        	    android:layout_width="fill_parent"
+        	    android:layout_height="wrap_content"
+        	    android:layout_toRightOf="@id/user_passwd_img"
+        	    android:hint="@string/login_please_enter_passwd"
+        	    android:background="@null"
+        	    />
+        </RelativeLayout>
+    </LinearLayout>
+    
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login_in"
+        android:background="@drawable/login_login_in_btn"
+        android:layout_below="@id/user_input"
+        android:paddingTop="@dimen/login_btn_top_bottom_padding"
+        android:paddingBottom="@dimen/login_btn_top_bottom_padding"
+        android:layout_marginTop="10dp"
+        />
+</RelativeLayout>

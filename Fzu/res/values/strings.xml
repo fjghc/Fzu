@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Fzu</string>
+    <string name="action_settings">Settings</string>
+    
+<!-- 登录模块 -->
+    <string name="login_please_enter_name">请输入你的用户名</string>
+    <string name="login_please_enter_passwd">请输入你的密码</string>
+    <string name="login_in">登录</string>
+</resources>
