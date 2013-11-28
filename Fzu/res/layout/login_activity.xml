@@ -20,7 +20,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/edit_background"
         android:orientation="vertical"
         android:layout_centerInParent="true"
         >
@@ -29,9 +28,11 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/login_edit_top_bottom_padding"
             android:paddingBottom="@dimen/login_edit_top_bottom_padding"
+            android:background="@drawable/edit_top_bg"
+            
             >    
         	<ImageView
-        	    android:id="@+id/user_name_img"
+        	    android:id="@+id/user_sid_img"
         	    android:layout_width="wrap_content"
         	    android:layout_height="wrap_content"
         	    android:background="@drawable/user_name_img"
@@ -41,33 +42,35 @@
         	    />
         	
         	<EditText
-        	    android:id="@+id/user_name_eidt"
+        	    android:id="@+id/user_sid_eidt"
         	    android:layout_width="fill_parent"
         	    android:layout_height="wrap_content"
-        	    android:layout_toRightOf="@id/user_name_img"
+        	    android:layout_toRightOf="@id/user_sid_img"
+        	    android:layout_centerVertical="true"
         	    android:hint="@string/login_please_enter_name"
         	    android:background="@null"
         	    />
         </RelativeLayout>
         
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="@color/lightgray"
-            />
+<!--         <TextView -->
+<!--             android:layout_width="fill_parent" -->
+<!--             android:layout_height="1dp" -->
+<!--             android:background="@color/lightgray" -->
+<!--             /> -->
         
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/login_edit_top_bottom_padding"
             android:paddingBottom="@dimen/login_edit_top_bottom_padding"
+            android:background="@drawable/edit_bottom_bg"
             >    
         	<ImageView
         	    android:id="@+id/user_passwd_img"
         	    android:layout_width="wrap_content"
         	    android:layout_height="wrap_content"
-        	    android:background="@drawable/user_passwd_img"
         	    android:layout_centerVertical="true"
+        	    android:background="@drawable/user_passwd_img"
         	    android:layout_marginRight="@dimen/login_img_right_margin"
         	    android:layout_marginLeft="@dimen/login_img_left_margin"
         	    />
@@ -76,6 +79,7 @@
         	    android:id="@+id/user_passwd_eidt"
         	    android:layout_width="fill_parent"
         	    android:layout_height="wrap_content"
+        	    android:layout_centerVertical="true"
         	    android:layout_toRightOf="@id/user_passwd_img"
         	    android:hint="@string/login_please_enter_passwd"
         	    android:background="@null"
@@ -84,6 +88,7 @@
     </LinearLayout>
     
     <Button
+        android:id="@+id/login_in_btn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/login_in"
