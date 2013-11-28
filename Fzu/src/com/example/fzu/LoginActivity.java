@@ -82,8 +82,8 @@ public class LoginActivity extends Activity implements OnClickListener,AsyncTask
 		MyHttpClient httpclient=new MyHttpClient();
 		httpclient.init(this);
 		List<NameValuePair> params=new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("muser","221100232"));
-		params.add(new BasicNameValuePair("passwd","726109"));
+		params.add(new BasicNameValuePair("muser","xx"));
+		params.add(new BasicNameValuePair("passwd","xx"));
 		httpclient.doPost(Fzu.TARGET_URL, params);
 		return false;
 	}
