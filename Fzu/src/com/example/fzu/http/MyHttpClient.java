@@ -1,6 +1,11 @@
 package com.example.fzu.http;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -18,8 +23,10 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
+import android.content.Context;
 import android.util.Log;
 
+import com.example.fzu.entity.Fzu;
 import com.example.fzu.entity.Student;
 
 public class MyHttpClient{
@@ -27,29 +34,32 @@ public class MyHttpClient{
     private Student mstudent;
     private HttpClient httpclient;
     private HttpParams httpparams;
+    private Context mctx;
     
-	public HttpClient getHttpClient()
+	public void init(Context ctx)
 	{
+		mctx=ctx;
 		httpparams=new BasicHttpParams();
-		HttpConnectionParams.setConnectionTimeout(httpparams, 3*1000);  //ÉèÖÃÁ¬½ÓµÄ³¬Ê±Ê±¼ä
-		HttpConnectionParams.setSoTimeout(httpparams, 2*1000);   //µÈ´ıÊı¾İµÄ³¬Ê±Ê±¼ä
-		HttpConnectionParams.setSocketBufferSize(httpparams, 8192);   //ÉèÖÃsocket»º³åÇø´óĞ¡
-		HttpClientParams.setRedirecting(httpparams, true);   //ÉèÖÃ×Ô¶¯ÖØ¶¨Ïò
+		HttpConnectionParams.setConnectionTimeout(httpparams, 3*1000);  //è¿æ¥è¶…æ—¶æ—¶é—´
+		HttpConnectionParams.setSoTimeout(httpparams, 2*1000);   //ç­‰å¾…æ•°æ®è¶…æ—¶æ—¶é—´
+		HttpConnectionParams.setSocketBufferSize(httpparams, 8192);   //è®¾ç½®socketç¼“å†²åŒºå¤§å°
+		HttpClientParams.setRedirecting(httpparams, true);   //è®¾ç½®é‡å®šå‘
 		httpclient=new DefaultHttpClient(httpparams);
-	   
-		return httpclient;
+
 	}
 	
 	public String doPost(String url,List<NameValuePair>params)
 	{
 		HttpPost httpRequest=new HttpPost(url);
 		String strResult="doPostError";
+		BufferedReader reader;
 		
 		try {
-			httpRequest.setEntity(new UrlEncodedFormEntity(params,HTTP.UTF_8));
+			httpRequest.addHeader("Referer", Fzu.REFERER);
+			httpRequest.setEntity(new UrlEncodedFormEntity(params,"gb2312"));
 			HttpResponse httpResponse=httpclient.execute(httpRequest);
 			if(httpResponse.getStatusLine().getStatusCode()==200){
-				strResult=EntityUtils.toString(httpResponse.getEntity());
+				strResult=changeInputStream(httpResponse.getEntity().getContent(),"gb2312");
 			}else{
 				strResult="doPostErrorResponse:"+httpResponse.getStatusLine().getStatusCode();
 			}
@@ -63,11 +73,54 @@ public class MyHttpClient{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			Log.d(MyHttpClient.LOG_TAG,strResult);
+			Log.d(LOG_TAG,strResult);
+			writeFileData("xml.txt",strResult);
+			
 		}
 		
 		return strResult;
 	}
+	
+	 private String changeInputStream(InputStream inputStream, String encode) {
+		         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		         byte[] data = new byte[1024];
+		         int len = 0;
+		         String result = "";
+		         if (inputStream != null) {
+		             try {
+		                 while ((len = inputStream.read(data)) != -1) {
+		                     outputStream.write(data, 0, len);
+		                 }
+		                 result = new String(outputStream.toByteArray(), encode);
+		 
+		             } catch (IOException e) {
+		                 e.printStackTrace();
+		              }
+		          }
+		        return result;
+	}
+	 
+	  public void writeFileData(String fileName,String message){ 
+
+	       try{ 
+
+	        FileOutputStream fout =mctx.openFileOutput(fileName, mctx.MODE_PRIVATE);
+
+	        byte [] bytes = message.getBytes(); 
+
+	        fout.write(bytes); 
+
+	        fout.close(); 
+
+	        } 
+
+	       catch(Exception e){ 
+
+	        e.printStackTrace(); 
+
+	       } 
+
+	}    
 	
 	public void close()
 	{

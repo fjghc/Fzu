@@ -8,4 +8,6 @@
     <string name="login_please_enter_name">请输入你的用户名</string>
     <string name="login_please_enter_passwd">请输入你的密码</string>
     <string name="login_in">登录</string>
+    <string name="login_logining">正在登录中...</string>
+    <string name="loging_fail">登录失败</string>
 </resources>

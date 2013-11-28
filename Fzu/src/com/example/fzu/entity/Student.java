@@ -2,9 +2,9 @@ package com.example.fzu.entity;
 
 public class Student {
 	
-	private String mSid;      //Ñ§ºÅ
-	private String mName;     //Ãû×Ö
-	private String mPasswd;   //ÃÜÂë
+	private String mSid;      //å­¦å·
+	private String mName;     //å§“å
+	private String mPasswd;   //å¯†ç 
 	
 	public void setSid(String sid)
 	{
