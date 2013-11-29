@@ -14,6 +14,7 @@ import com.example.fzu.task.GeneralTask;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -27,6 +28,7 @@ public class LoginActivity extends Activity implements OnClickListener,AsyncTask
     private EditText edtUserSid;
     private EditText edtUserPasswd;
     private Student mstudent;
+    private static final String LOGTAG="LoginActivity";
 
 	
 	public void onCreate(Bundle savedInstanceState)
@@ -79,12 +81,27 @@ public class LoginActivity extends Activity implements OnClickListener,AsyncTask
 	@Override
 	public boolean doTaskInBackground() {
 		// TODO Auto-generated method stub
-		MyHttpClient httpclient=new MyHttpClient();
-		httpclient.init(this);
+		MyHttpClient myhttpclient=MyHttpClient.getInstance();
+		myhttpclient.init(this);
 		List<NameValuePair> params=new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("muser","xx"));
-		params.add(new BasicNameValuePair("passwd","xx"));
-		httpclient.doPost(Fzu.TARGET_URL, params);
+		params.add(new BasicNameValuePair("muser","221100232"));
+		params.add(new BasicNameValuePair("passwd","726109"));
+		int currentNum=0;
+		while(currentNum<Fzu.TOTAL)
+		{
+		    try {
+			    currentNum++;
+			    myhttpclient.doPost(Fzu.TARGET_URL, params);
+			    return true;
+		    } catch (Exception e) {
+			// TODO Auto-generated catch block
+			    if(currentNum<=Fzu.TOTAL)
+			    	e.printStackTrace();
+			    else
+			    	Log.d(LOGTAG,"three doPost all fail");
+			    
+		    }
+		}
 		return false;
 	}
 
