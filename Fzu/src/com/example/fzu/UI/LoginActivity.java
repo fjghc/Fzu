@@ -1,4 +1,4 @@
-package com.example.fzu;
+package com.example.fzu.UI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +6,18 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
-import com.example.fzu.entity.Fzu;
+import com.example.fzu.Fzu;
+import com.example.fzu.R;
+import com.example.fzu.R.id;
+import com.example.fzu.R.layout;
+import com.example.fzu.R.string;
 import com.example.fzu.entity.Student;
 import com.example.fzu.http.MyHttpClient;
 import com.example.fzu.task.AsyncTaskListener;
 import com.example.fzu.task.GeneralTask;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -84,8 +89,8 @@ public class LoginActivity extends Activity implements OnClickListener,AsyncTask
 		MyHttpClient myhttpclient=MyHttpClient.getInstance();
 		myhttpclient.init(this);
 		List<NameValuePair> params=new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("muser","221100232"));
-		params.add(new BasicNameValuePair("passwd","726109"));
+		params.add(new BasicNameValuePair("muser","xx"));
+		params.add(new BasicNameValuePair("passwd","xx"));
 		int currentNum=0;
 		while(currentNum<Fzu.TOTAL)
 		{
@@ -114,8 +119,13 @@ public class LoginActivity extends Activity implements OnClickListener,AsyncTask
 	@Override
 	public void onUIPostExecute(boolean isSuccess) {
 		// TODO Auto-generated method stub
-		if(!isSuccess)
+		if(!isSuccess){
 			Toast.makeText(this,getString(R.string.loging_fail),Toast.LENGTH_SHORT).show();
+			return ;
+		}
+		
+		Intent intent=new Intent(this,MainActivity.class);
+		startActivity(intent);
 	}
 
 }

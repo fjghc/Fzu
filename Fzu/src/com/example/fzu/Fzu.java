@@ -1,4 +1,4 @@
-package com.example.fzu.entity;
+package com.example.fzu;
 
 public class Fzu {
     public static final String REFERER="http://jwch.fzu.edu.cn/";

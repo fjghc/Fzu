@@ -23,7 +23,8 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import android.content.Context;
 import android.util.Log;
-import com.example.fzu.entity.Fzu;
+
+import com.example.fzu.Fzu;
 
 public class MyHttpClient{
 	private static final String LOG_TAG="MyHttpClient";

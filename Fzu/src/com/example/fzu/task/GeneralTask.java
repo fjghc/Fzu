@@ -1,13 +1,18 @@
 package com.example.fzu.task;
 
+import com.example.fzu.R;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.TextView;
 
 public class GeneralTask extends AsyncTask<Void,Void,Boolean>{
 	private String mshowText;
 	private Context mctx;
 	private AsyncTaskListener mAsyncTaskListener;
+	private AlertDialog mydialog;
+	private TextView dialogText;
 	
 	public GeneralTask(String showText,Context ctx)
 	{
@@ -25,7 +30,12 @@ public class GeneralTask extends AsyncTask<Void,Void,Boolean>{
 	}
 
 	protected void onPreExecute(){
-		new AlertDialog.Builder(mctx).setMessage(mshowText);
+		mydialog=new AlertDialog.Builder(mctx).create();
+		mydialog.show();
+	    mydialog.getWindow().setContentView(R.layout.login_alertdialog);
+	    dialogText=(TextView)(mydialog.getWindow().findViewById(R.id.alertdialog_text));
+	    dialogText.setText(mshowText);
+	    
 	}
 	
 	@Override
@@ -46,6 +56,10 @@ public class GeneralTask extends AsyncTask<Void,Void,Boolean>{
 	{
 		if(mAsyncTaskListener!=null)
 			mAsyncTaskListener.onUIPostExecute(result);
+		
+		if(mydialog!=null)
+		    mydialog.dismiss();
+		
 	}
 
     
