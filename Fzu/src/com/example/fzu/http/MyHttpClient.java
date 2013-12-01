@@ -25,6 +25,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.fzu.Fzu;
+import com.example.fzu.xml.XmlParser;
 
 public class MyHttpClient{
 	private static final String LOG_TAG="MyHttpClient";
@@ -80,7 +81,8 @@ public class MyHttpClient{
 			httpRequest.setEntity(new UrlEncodedFormEntity(params,"gb2312"));
 			HttpResponse httpResponse=httpclient.execute(httpRequest);
 			if(httpResponse.getStatusLine().getStatusCode()==200){
-				strResult=changeInputStream(httpResponse.getEntity().getContent(),"gb2312");
+				XmlParser xp=new XmlParser();
+				xp.getDataFormCourseXML(httpResponse.getEntity().getContent(),"gb2312");
 			}else{
 				strResult="doPostErrorResponse:"+httpResponse.getStatusLine().getStatusCode();
 			}
