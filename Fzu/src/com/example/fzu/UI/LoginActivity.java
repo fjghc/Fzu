@@ -3,7 +3,11 @@ package com.example.fzu.UI;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.example.fzu.Fzu;
@@ -15,6 +19,7 @@ import com.example.fzu.entity.Student;
 import com.example.fzu.http.MyHttpClient;
 import com.example.fzu.task.AsyncTaskListener;
 import com.example.fzu.task.GeneralTask;
+import com.example.fzu.utils.FileUtil;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -33,7 +38,7 @@ public class LoginActivity extends Activity implements OnClickListener,AsyncTask
     private EditText edtUserSid;
     private EditText edtUserPasswd;
     private Student mstudent;
-    private static final String LOGTAG="LoginActivity";
+    private static final String LOG_TAG="LoginActivity";
 
 	
 	public void onCreate(Bundle savedInstanceState)
@@ -86,24 +91,22 @@ public class LoginActivity extends Activity implements OnClickListener,AsyncTask
 	@Override
 	public boolean doTaskInBackground() {
 		// TODO Auto-generated method stub
-		MyHttpClient myhttpclient=MyHttpClient.getInstance();
-		myhttpclient.init(this);
 		List<NameValuePair> params=new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("muser","221100232"));
-		params.add(new BasicNameValuePair("passwd","726109"));
+		params.add(new BasicNameValuePair("muser","xx"));
+		params.add(new BasicNameValuePair("passwd","xx"));
 		int currentNum=0;
 		while(currentNum<Fzu.TOTAL)
 		{
 		    try {
 			    currentNum++;
-			    myhttpclient.doPost(Fzu.TARGET_URL, params);
+			    doPost(Fzu.TARGET_URL, params);
 			    return true;
 		    } catch (Exception e) {
 			// TODO Auto-generated catch block
-			    if(currentNum<=Fzu.TOTAL)
+			    if(currentNum<Fzu.TOTAL)
 			    	e.printStackTrace();
 			    else
-			    	Log.d(LOGTAG,"three doPost all fail");
+			    	Log.d(LOG_TAG,"three doPost all fail");
 			    
 		    }
 		}
@@ -126,6 +129,29 @@ public class LoginActivity extends Activity implements OnClickListener,AsyncTask
 		
 		Intent intent=new Intent(this,MainActivity.class);
 		startActivity(intent);
+	}
+	
+	public String doPost(String url,List<NameValuePair>params) throws Exception
+	{
+		HttpPost httpRequest=new HttpPost(url);
+		String strResult="doPostError";
+		
+		try {
+			httpRequest.addHeader("Referer", Fzu.REFERER);
+			httpRequest.setEntity(new UrlEncodedFormEntity(params,"gb2312"));
+			HttpResponse httpResponse=MyHttpClient.getInstance().execute(httpRequest);
+			if(httpResponse.getStatusLine().getStatusCode()==200){
+				strResult=FileUtil.changeInputStream(httpResponse.getEntity().getContent(),"gb2312");
+			}else{
+				strResult="doPostErrorResponse:"+httpResponse.getStatusLine().getStatusCode();
+			}
+		} finally{
+			Log.d(LOG_TAG,strResult);
+			FileUtil.writeFileData("xml.txt",strResult,this);
+			
+		}
+		
+		return strResult;
 	}
 
 }
