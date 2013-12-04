@@ -35,10 +35,6 @@ public class Student {
 		this.mPasswd=passwd;
 	}
 	
-	public String getPasswd()
-	{
-		return this.mPasswd;
-	}
 	
 	public void setCourses(ArrayList<Course> courses)
 	{

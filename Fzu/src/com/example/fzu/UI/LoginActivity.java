@@ -15,10 +15,12 @@ import com.example.fzu.R;
 import com.example.fzu.R.id;
 import com.example.fzu.R.layout;
 import com.example.fzu.R.string;
+import com.example.fzu.entity.Global;
 import com.example.fzu.entity.Student;
 import com.example.fzu.http.MyHttpClient;
 import com.example.fzu.task.AsyncTaskListener;
 import com.example.fzu.task.GeneralTask;
+import com.example.fzu.utils.CommonUtil;
 import com.example.fzu.utils.FileUtil;
 
 import android.app.Activity;
@@ -92,8 +94,8 @@ public class LoginActivity extends Activity implements OnClickListener,AsyncTask
 	public boolean doTaskInBackground() {
 		// TODO Auto-generated method stub
 		List<NameValuePair> params=new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("muser","xx"));
-		params.add(new BasicNameValuePair("passwd","xx"));
+		params.add(new BasicNameValuePair("muser","221100232"));
+		params.add(new BasicNameValuePair("passwd","726109"));
 		int currentNum=0;
 		while(currentNum<Fzu.TOTAL)
 		{
@@ -127,6 +129,11 @@ public class LoginActivity extends Activity implements OnClickListener,AsyncTask
 			return ;
 		}
 		
+		
+		//密码加密处理...
+		mstudent.setPasswd(CommonUtil.md5(edtUserPasswd.getEditableText().toString().trim()));
+		
+		Global.currentStudent=mstudent;
 		Intent intent=new Intent(this,MainActivity.class);
 		startActivity(intent);
 	}

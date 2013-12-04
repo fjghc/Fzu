@@ -16,4 +16,7 @@
     <string name="course_table">课程表</string>
     <string name="score">成绩</string>
     <string name="setting">设置</string>
+    <string name="getting_course_table">正在获取课程表...</string>
+    <string name="getting_score">正在获取成绩...</string>
+    <string name="getting_fail">获取失败</string>
 </resources>
