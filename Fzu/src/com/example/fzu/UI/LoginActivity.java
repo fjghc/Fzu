@@ -94,8 +94,8 @@ public class LoginActivity extends Activity implements OnClickListener,AsyncTask
 	public boolean doTaskInBackground() {
 		// TODO Auto-generated method stub
 		List<NameValuePair> params=new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("muser","221100232"));
-		params.add(new BasicNameValuePair("passwd","726109"));
+		params.add(new BasicNameValuePair("muser","xx"));
+		params.add(new BasicNameValuePair("passwd","xx"));
 		int currentNum=0;
 		while(currentNum<Fzu.TOTAL)
 		{
