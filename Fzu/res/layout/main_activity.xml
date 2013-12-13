@@ -1,120 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+<TabHost
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    >
     
-    <RelativeLayout
-        android:id="@+id/rl_title"
+    <FrameLayout
+        android:id="@android:id/tabcontent"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/title_bg"
-        >
-        <TextView
-            android:id="@+id/main_title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Title"
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            />
-    </RelativeLayout>
-    
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        />
+
 
     
-    <LinearLayout
-        android:id="@+id/ll_bottom"
-        android:layout_alignParentBottom="true"
+    <TabWidget
+        android:id="@android:id/tabs"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <LinearLayout
-            android:id="@+id/tab_course_table"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:background="@drawable/tab_bg"
-            >
-            <ImageView
-                android:id="@+id/course_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/course_normal"
-                />
-            
-            <TextView
-                android:id="@+id/tv_course_table"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/course_table"
-                android:textColor="@color/white"
-                />
-        </LinearLayout>
+        android:layout_gravity="bottom"
+         />
         
-        <LinearLayout
-            android:id="@+id/tab_score"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:background="@drawable/tab_bg"
-            >
-            <ImageView
-                android:id="@+id/score_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/score_normal"
-                />
-            
-            <TextView
-                android:id="@+id/tv_score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/score"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/white"
-                />
-        </LinearLayout>
-        
-                
-        <LinearLayout
-            android:id="@+id/tab_setting"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:background="@drawable/tab_bg"
-            >
-            
-            <ImageView
-                android:id="@+id/setting_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/setting_normal"
-                />
-                        
-            <TextView
-                android:id="@+id/tv_setting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/setting"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/white"
-                />
-        </LinearLayout>
-    </LinearLayout>
-    
-<!--     <fragment -->
-<!--         android:layout_width="fill_parent" -->
-<!--         android:layout_height="fill_parent" -->
-<!--         android:layout_below="@id/rl_title" -->
-<!--         android:layout_above="@id/ll_bottom" -->
-<!--         /> -->
 
-</RelativeLayout>
+</LinearLayout>
+</TabHost>

@@ -19,4 +19,14 @@
     <string name="getting_course_table">正在获取课程表...</string>
     <string name="getting_score">正在获取成绩...</string>
     <string name="getting_fail">获取失败</string>
+    
+    
+<!-- 课程表模块 -->
+    <string name="one">一</string>
+    <string name="two">二</string>
+    <string name="three">三</string>
+    <string name="four">四</string>
+    <string name="five">五</string>
+    <string name="six">六</string>
+    <string name="seven">日</string>
 </resources>

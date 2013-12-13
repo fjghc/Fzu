@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.TextView;
 
+//前台遮挡，后台处理任务类
 public class GeneralTask extends AsyncTask<Void,Void,Boolean>{
 	private String mshowText;
 	private Context mctx;

@@ -1,0 +1,138 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" 
+    android:orientation="vertical">
+    
+    <RelativeLayout
+        android:id="@+id/course_table_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg"
+        >
+        <TextView
+            android:id="@+id/course_table_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/course_table"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/titles"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:textColor="#000000"
+        android:background="@color/tipscolor"
+        >
+        <TextView
+            android:id="@+id/tv_one"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/one"
+            android:textColor="@color/skyblue"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/selector_top_padding"
+            android:paddingBottom="@dimen/selector_bottom_padding"
+            />
+        
+        <TextView
+            android:id="@+id/tv_two"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/two"
+            android:textColor="@color/skyblue"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/selector_top_padding"
+            android:paddingBottom="@dimen/selector_bottom_padding"
+            />
+        
+        <TextView
+            android:id="@+id/tv_three"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/three"
+            android:textColor="@color/skyblue"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/selector_top_padding"
+            android:paddingBottom="@dimen/selector_bottom_padding"
+            />
+        
+        <TextView
+            android:id="@+id/tv_four"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/four"
+            android:textColor="@color/skyblue"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/selector_top_padding"
+            android:paddingBottom="@dimen/selector_bottom_padding"
+            />
+        
+        <TextView
+            android:id="@+id/tv_five"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/five"
+            android:textColor="@color/skyblue"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/selector_top_padding"
+            android:paddingBottom="@dimen/selector_bottom_padding"
+            />
+        
+        <TextView
+            android:id="@+id/tv_six"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/six"
+            android:textColor="@color/skyblue"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/selector_top_padding"
+            android:paddingBottom="@dimen/selector_bottom_padding"
+            />
+        
+        <TextView
+            android:id="@+id/tv_seven"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/seven"
+            android:textColor="@color/skyblue"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/selector_top_padding"
+            android:paddingBottom="@dimen/selector_bottom_padding"
+            />
+        
+    
+    </LinearLayout>
+    
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"
+        />
+    
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        />
+
+</LinearLayout>

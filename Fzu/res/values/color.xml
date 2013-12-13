@@ -5,4 +5,9 @@
     <color name="white">#FFFFFF</color>
     <color name="blue">#0000FF</color>
     <color name="lightblue">#1E90FF</color>
+    <color name="skyblue">#2A9CE4</color>
+    <color name="linecolor">#E0DFE0</color>
+    <color name="tipscolor">#F2F2F2</color>
+    <color name="divider">#C9C8C9</color>
+    
 </resources>

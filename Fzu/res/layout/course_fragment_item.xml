@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/course_sessions_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3-4节"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/item_sessions_left_right"
+        android:layout_marginRight="@dimen/item_sessions_left_right"
+        />
+    
+    <LinearLayout
+        android:id="@+id/course_information_ll"
+        android:layout_toRightOf="@id/course_sessions_tv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        >
+        <TextView
+            android:id="@+id/course_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="大学物理（下）"
+            android:layout_marginTop="@dimen/item_top_bottom_padding"
+            android:textSize="20sp"
+            />
+        
+        
+        <LinearLayout
+            android:layout_width="wrap_content"    
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/item_top_bottom_padding"
+            >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/course_location"
+            android:layout_gravity="center_vertical"
+            />
+            
+        <TextView
+            android:id="@+id/course_location_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="东2-301"
+            android:layout_marginLeft="10dp"
+            android:textSize="14sp"
+            />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/item_top_bottom_padding"
+            android:layout_marginBottom="@dimen/item_top_bottom_padding"
+            >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/course_week"
+            android:layout_gravity="center_vertical"
+            />
+            
+        <TextView
+            android:id="@+id/course_week_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="13-18周"
+            android:layout_marginLeft="10dp"
+            android:textSize="14sp"
+            />
+        
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -10,7 +10,6 @@
  *
  * Copyright (c) 2013, TNT All Rights Reserved.
 */
-
 package com.example.fzu.entity;
 /**
  * ClassName:Global
