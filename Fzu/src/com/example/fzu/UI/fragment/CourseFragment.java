@@ -31,12 +31,22 @@ public class CourseFragment extends Fragment{
 
     private View view;
     private ListView courseListView;
-    private ArrayList<SingleCourse> mSingleCourseList;
+    private ArrayList<SingleCourse> mSingleCourseList=new ArrayList<SingleCourse>();
     private boolean hasCourse=false;    //某一节是否有课程
     
     //传入本日含有的课程
     public CourseFragment(ArrayList<SingleCourse> singleCourseList) {
-    	mSingleCourseList=new ArrayList<SingleCourse>();
+    	parseTodayCourse(singleCourseList);
+        
+    }
+    
+    public void setData(ArrayList<SingleCourse> singleCourseList){
+    	mSingleCourseList.clear();
+    	parseTodayCourse(singleCourseList);
+    
+    }
+
+    public void parseTodayCourse(ArrayList<SingleCourse> singleCourseList){
         for(int i=1;i<=12;i++){
         	hasCourse=false;
         	if(singleCourseList!=null){
@@ -59,12 +69,8 @@ public class CourseFragment extends Fragment{
         		mSingleCourseList.add(emptyCourse);
         	}
         }
-        	
-        
-
-        
-    }
-
+    	
+    } 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

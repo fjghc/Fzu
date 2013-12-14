@@ -90,7 +90,7 @@ public class SingleCourse {
 		return ctl;
 	}
 
-	public void setCtl(CourseTimeLocation ctls) {
+	public void setCtl(CourseTimeLocation ctl) {
 		this.ctl = ctl;
 	}
 

@@ -16,6 +16,7 @@ package com.example.fzu.UI;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -41,6 +42,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
+import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,28 +55,37 @@ import android.widget.Toast;
  * @since    Ver 1.1
  * @Date	 2013-11-29		下午9:25:16
  */
-public class MainActivity extends TabActivity implements OnClickListener{
-
+public class MainActivity extends TabActivity implements OnTabChangeListener{
+	private static final String LOG_TAG="MainActivity";
     private TabHost mTabHost;
-	
+    private View tabCourseTable; 
+	private View tabSetting;
 	public void onCreate(Bundle bundle)
 	{
 		super.onCreate(bundle);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.main_activity);
 		init();
-
+        initEvent();
 	}
 	
-	public void init()
-	{
+	public void init(){
 		mTabHost=getTabHost();
+		tabCourseTable=setTabView(R.string.course_table,R.drawable.course_normal);
+        tabSetting=setTabView(R.string.setting,R.drawable.setting_normal);
         
-		mTabHost.addTab(mTabHost.newTabSpec("tab1").setIndicator(setTabView(R.string.course_table,R.drawable.course_normal)).setContent(new Intent(this,CourseFragmentActivity.class)));
-		mTabHost.addTab(mTabHost.newTabSpec("tab2").setIndicator(setTabView(R.string.setting,R.drawable.setting_normal)).setContent(new Intent(this,SettingActivity.class)));
+		mTabHost.addTab(mTabHost.newTabSpec("tab1").setIndicator(tabCourseTable).setContent(new Intent(this,CourseFragmentActivity.class)));
+		mTabHost.addTab(mTabHost.newTabSpec("tab2").setIndicator(tabSetting).setContent(new Intent(this,SettingActivity.class)));
 		mTabHost.setCurrentTab(0);
+		onTabChanged("tab1");
 		
 		
+	}
+	
+	public void initEvent(){
+//		tabCourseTable.setOnClickListener(this);  添加监听事件会导致setContent的intent失效，
+//		tabSetting.setOnClickListener(this);      所以还是要用内部集成的ontabchangelistener监听
+		mTabHost.setOnTabChangedListener(this);
 	}
 	
 	/**
@@ -95,10 +106,27 @@ public class MainActivity extends TabActivity implements OnClickListener{
 	}
 	
 	@Override
-	public void onClick(View arg0) {
+	public void onTabChanged(String arg0) {
 		// TODO Auto-generated method stub
-		
+        for (int i = 0; i < mTabHost.getTabWidget().getChildCount(); i++) {  
+            View view = mTabHost.getTabWidget().getChildAt(i);  
+            TextView tabTV=(TextView)view.findViewById(R.id.tab_text);
+            if (mTabHost.getCurrentTab() == i) {    
+            	tabTV.setTextColor((getResources().getColor(R.color.lightblue)));
+            } else {  
+            	tabTV.setTextColor((getResources().getColor(R.color.white)));
+            }  
+        }
+        
+        if(arg0.equals("tab1")){
+
+        	
+        }
+        
+        
 	}
+	
+
 
 
 }

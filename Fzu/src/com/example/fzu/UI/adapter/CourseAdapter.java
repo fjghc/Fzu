@@ -78,6 +78,8 @@ public class CourseAdapter extends BaseAdapter{
 		viewholder.week.setText(mCourses.get(position).getCtl().getWeekrange());
 		if(mCourses.get(position).getName()==null||mCourses.get(position).getName().equals(""))
 			viewholder.courseInformation.setVisibility(View.INVISIBLE);
+		else
+			viewholder.courseInformation.setVisibility(View.VISIBLE);
 		return view;
 	}
 
